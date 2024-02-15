@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package eganow.api.pay_partner;
+
+option go_package = "github.com/eganow/partners/api;pb";
+
+import "google/api/field_behavior.proto";
+
+// NameEnquiryRequest is the request sent to the NameEnquiry service
+message NameEnquiryRequest {
+  enum RequestType {
+    UNSPECIFIED = 0;
+    DEBIT = 1;
+    CREDIT = 2;
+  }
+
+  string bank_code = 1 [(google.api.field_behavior) = REQUIRED]; // 3 digits
+  oneof account_number {
+    string bank_account_number = 2 [(google.api.field_behavior) = REQUIRED];
+    string phone_number = 3 [(google.api.field_behavior) = REQUIRED];
+  }
+
+  //required for GHIPSS
+  RequestType request_type = 4;
+}

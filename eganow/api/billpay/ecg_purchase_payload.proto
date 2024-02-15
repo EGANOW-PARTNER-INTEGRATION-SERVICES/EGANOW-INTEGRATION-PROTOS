@@ -1,0 +1,29 @@
+syntax = "proto3";
+package eganow.api.billpay;
+
+option go_package = "github.com/eganow/partners/api;pb";
+
+import "eganow/api/billpay/data_purchase_payload.proto";
+import "eganow/api/billpay/shared_payload.proto";
+import "google/api/annotations.proto";
+import "eganow/api/common.proto";
+import "google/api/field_behavior.proto";
+
+message PurchaseElectricityCreditRequest {
+  string phone_number = 1 [(google.api.field_behavior) = REQUIRED];
+  string partner_id = 2 [(google.api.field_behavior) = REQUIRED];
+  double amount = 3 [(google.api.field_behavior) = REQUIRED];
+  string reference = 4; // an optional description of the purchase
+  string callback_url = 5 [(google.api.field_behavior) = REQUIRED];
+  string meter_id = 6 [(google.api.field_behavior) = REQUIRED];
+}
+
+message MeterDetails {
+  string meter_id = 1;
+  string meter_owner_name = 2;
+  double amount_due = 3;
+}
+
+message QueryMeterDetailsResponse {
+  repeated MeterDetails meters = 1;
+}

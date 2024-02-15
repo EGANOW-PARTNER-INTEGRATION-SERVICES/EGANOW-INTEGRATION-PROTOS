@@ -1,0 +1,27 @@
+syntax = "proto3";
+package eganow.api.billpay;
+
+option go_package = "github.com/eganow/partners/api;pb";
+
+enum NetworkCode {
+  NETWORK_CODE_UNKNOWN = 0;
+  NETWORK_CODE_MTN = 1;
+  NETWORK_CODE_VODAFONE = 2;
+  NETWORK_CODE_AIRTEL = 3;
+}
+
+message CallbackRequest {
+  message CallbackMeta {
+    string Commission = 1;
+  }
+
+  message CallbackData {
+    string ClientReference = 1;
+    double Amount = 2;
+    string TransactionId = 3;
+    CallbackMeta meta = 4;
+  }
+
+  string ResponseCode = 1;
+  CallbackData Data = 2;
+}

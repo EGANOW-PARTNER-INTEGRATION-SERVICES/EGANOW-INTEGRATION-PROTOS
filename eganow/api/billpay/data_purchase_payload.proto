@@ -1,0 +1,29 @@
+syntax = "proto3";
+package eganow.api.billpay;
+
+option go_package = "github.com/eganow/partners/api;pb";
+
+import "eganow/api/billpay/data_purchase_entity.proto";
+import "eganow/api/billpay/shared_payload.proto";
+import "google/api/field_behavior.proto";
+
+// Request available bundles allowed for a user's phone number
+message GetAvailableBundlesRequest {
+  string phone_number = 1 [(google.api.field_behavior) = REQUIRED];
+  string partner_id = 2 [(google.api.field_behavior) = REQUIRED];
+  NetworkCode network_code = 3 [(google.api.field_behavior) = REQUIRED];
+}
+
+message GetAvailableBundlesResponse {
+  repeated DataBundle bundles = 1;
+}
+
+message DataPurchaseRequest {
+  string phone_number = 1 [(google.api.field_behavior) = REQUIRED];
+  string partner_id = 2 [(google.api.field_behavior) = REQUIRED];
+  NetworkCode network_code = 3 [(google.api.field_behavior) = REQUIRED];
+  string bundle_id = 4 [(google.api.field_behavior) = REQUIRED];
+  double amount = 5 [(google.api.field_behavior) = REQUIRED];
+  string reference = 6; // an optional description of the purchase
+  string callback_url = 7 [(google.api.field_behavior) = REQUIRED];
+}

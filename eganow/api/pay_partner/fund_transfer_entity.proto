@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package eganow.api.pay_partner;
+
+option go_package = "github.com/eganow/partners/api;pb";
+
+enum TransactionStatus {
+  PENDING = 0;
+  SUCCESSFUL = 1;
+  FAILED = 2;
+}
+
+enum TransactionType {
+  COLLECTION = 0;
+  PAYOUT = 1;
+}
+
+message TransLogMomoBankMerchant {
+  enum UpdateType {
+    AUTO = 0;
+    MANUAL = 1;
+  }
+
+  int32 TID = 18; // transaction ID (auto increment)
+  string EganowTransRefNo = 1;
+  string PartnerTransRefNo = 6; // update with value received from pay partner
+  string AccountNumberOrMSISDN = 2;
+  string EganowPartnerId = 3; // MTN, Vodafone, AirtelTigo, GHIPSS
+  float TransAmount = 4;
+  TransactionType TransTypeCollectionOrPayout = 5;
+  string RequestID = 7; // ??
+  string ResponseID = 8; // ??
+  string TransNarration = 9;
+  string RequestDate = 10;
+  UpdateType AutoOrManualUpdate = 12;
+  string InitialRequestPayload = 14; // JSON/string
+  string InitialResponsePayload = 15; // update with value received from pay partner (JSON/string)
+  TransactionStatus EganowTransactionStatus = 16;
+  string PayPartnerTransactionStatus = 17;
+  string TransactionCallbackResponse = 19;
+  string LastUpdated = 11;
+  string UpdatedBy = 13;
+}

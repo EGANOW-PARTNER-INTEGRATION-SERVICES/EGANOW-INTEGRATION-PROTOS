@@ -1,0 +1,35 @@
+syntax = "proto3";
+package eganow.api.billpay;
+
+option go_package = "github.com/eganow/partners/api;pb";
+
+import "eganow/api/billpay/data_purchase_payload.proto";
+import "eganow/api/billpay/shared_payload.proto";
+import "google/api/annotations.proto";
+import "eganow/api/common.proto";
+
+service DataPurchaseSvc {
+  // GetAvailableBundles is called to get the available data bundles for a given provider
+  rpc GetAvailableBundles(GetAvailableBundlesRequest) returns (GetAvailableBundlesResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/billpay/data/available_bundles"
+      body: "*"
+    };
+  }
+
+  // Purchase is called to initiate a data purchase transaction
+  rpc Purchase(DataPurchaseRequest) returns (StringValue) {
+    option (google.api.http) = {
+      post: "/api/v1/billpay/data/purchase"
+      body: "*"
+    };
+  }
+
+  // Callback is called by the partner to notify us of the status of the transaction
+  rpc HubtelDataCallback(CallbackRequest) returns (Empty) {
+    option (google.api.http) = {
+      post: "/api/v1/billpay/data/callback"
+      body: "*"
+    };
+  }
+}

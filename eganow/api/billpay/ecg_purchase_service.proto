@@ -1,0 +1,33 @@
+syntax = "proto3";
+package eganow.api.billpay;
+
+option go_package = "github.com/eganow/partners/api;pb";
+
+import "eganow/api/billpay/ecg_purchase_payload.proto";
+import "eganow/api/billpay/shared_payload.proto";
+import "google/api/annotations.proto";
+import "eganow/api/common.proto";
+import "google/api/field_behavior.proto";
+
+service ElectricityCreditPurchaseSvc {
+  rpc QueryMeterDetailsWithPhoneNumber(StringValue) returns (QueryMeterDetailsResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/billpay/electricity/meter/{value}"
+    };
+  }
+
+  rpc Purchase (PurchaseElectricityCreditRequest) returns (StringValue) {
+    option (google.api.http) = {
+      post: "/api/v1/billpay/electricity/credit/purchase"
+      body: "*"
+    };
+  }
+
+  // Callback is called by the partner to notify us of the status of the transaction
+  rpc HubtelUtilityCallback(CallbackRequest) returns (Empty) {
+    option (google.api.http) = {
+      post: "/api/v1/billpay/electricity/callback"
+      body: "*"
+    };
+  }
+}

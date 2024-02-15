@@ -1,0 +1,10 @@
+syntax = "proto3";
+package eganow.api.billpay;
+
+option go_package = "github.com/eganow/partners/api;pb";
+
+message DataBundle {
+  string id = 1; // bundle id
+  string name = 2; // name e.g. "1GB Social Data"
+  double amount = 3; // amount in GHS
+}

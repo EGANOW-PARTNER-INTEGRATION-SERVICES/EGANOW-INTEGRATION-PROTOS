@@ -1,0 +1,103 @@
+syntax = "proto3";
+
+package eganow.api.pay_partner;
+
+option go_package = "github.com/eganow/partners/api;pb";
+
+import "google/api/field_behavior.proto";
+import "eganow/api/pay_partner/fund_transfer_entity.proto";
+
+// TransferFundsRequest is the request message for the TransferFunds RPC.
+message FundTransferRequest {
+  message BankFundTransferRequest {
+    string source_account_number = 2 [(google.api.field_behavior) = REQUIRED];
+    string source_account_name = 3; // optional
+    string destination_account_number = 4 [(google.api.field_behavior) = REQUIRED];
+    string destination_account_name = 5; // optional
+    string bank_code = 6 [(google.api.field_behavior) = REQUIRED];
+  }
+
+  float transaction_amount = 1 [(google.api.field_behavior) = REQUIRED];
+  float tax_amount = 8;
+
+  oneof fund_transfer_account {
+    BankFundTransferRequest bank_details = 2; // use this for GHIPSS
+    string mobile_number = 3; // use this for MTN, VODAFONE, AIRTEL-TIGO
+  }
+
+  string narration = 7; // optional
+
+  string currency_iso = 9; // optional (defaults to GHS)
+  string transaction_reference_number = 10; // optional
+
+  string callback_url = 11; // (MTN, VODAFONE, AIRTEL-TIGO)
+
+  string pay_partner_id = 12 [(google.api.field_behavior) = REQUIRED];
+}
+
+// TransferFundsResponse is the response message for the TransferFunds RPC.
+message FundTransferResponse {
+  TransactionStatus transaction_status = 1;
+  string reference_number = 2;
+  string response_payload_json = 3; // JSON string of the response payload (required by Eganow Merchant API)
+}
+
+// StatusQueryRequest is the request message for the StatusQuery RPC.
+message StatusQueryRequest {
+  message BankStatusQueryRequest {
+    float amount = 1 [(google.api.field_behavior) = REQUIRED];
+    string account_number = 2 [(google.api.field_behavior) = REQUIRED];
+    string bank_code = 3 [(google.api.field_behavior) = REQUIRED];
+    string transaction_reference_number = 4 [(google.api.field_behavior) = REQUIRED];
+  }
+
+  message MobileStatusQueryRequest {
+    string transaction_id = 2 [(google.api.field_behavior) = REQUIRED];
+    TransactionType transaction_type = 3 [(google.api.field_behavior) = REQUIRED];
+  }
+
+  oneof payload {
+    BankStatusQueryRequest bank_details = 1 [(google.api.field_behavior) = REQUIRED];
+    MobileStatusQueryRequest mobile_details = 2 [(google.api.field_behavior) = REQUIRED];
+  }
+}
+
+// StatusQueryResponse is the response message for the StatusQuery RPC.
+message StatusQueryResponse {
+  string transaction_id = 1;
+  TransactionStatus status = 2; // status iof the transaction
+}
+
+// RemittanceTransferFundsRequest is the request message for the RemittanceTransferFunds RPC.
+message RemittanceTransferRequest {
+  float amount = 1 [(google.api.field_behavior) = REQUIRED];
+  string source_account_number = 2 [(google.api.field_behavior) = REQUIRED];
+  string source_account_name = 3; // optional
+  string destination_account_number = 4 [(google.api.field_behavior) = REQUIRED];
+  string destination_account_name = 5; // optional
+  string country_name = 6 [(google.api.field_behavior) = REQUIRED]; // must be FRA,ITL,ENG,GHA. (3 characters)
+  string bank_code = 7 [(google.api.field_behavior) = REQUIRED];
+}
+
+// MtnMomoTransactionCallbackRequest is the request message for the MtnMomoTransactionCallback RPC.
+message MtnMomoTransactionCallbackRequest {
+  message ReceiverInfo {
+    string fromFri = 1;
+    string status = 2;
+    string referenceid = 3;
+    string communicationchannel = 4;
+  }
+
+  ReceiverInfo receiverInfo = 1;
+  string transactionid = 2;
+  string externaltransactionid = 3;
+
+}
+
+// AtMoneyTransactionCallbackRequest is the request message for the AtMoneyTransactionCallback RPC.
+message AtMoneyTransactionCallbackRequest {
+  string trans_id = 1;
+  string trans_status = 2;
+  string trans_ref = 3;
+  string message = 4;
+}

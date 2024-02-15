@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package eganow.api.pay_partner;
+
+option go_package = "github.com/eganow/partners/api;pb";
+
+import "eganow/api/pay_partner/name_enquiry_payload.proto";
+import "eganow/api/common.proto";
+import "google/api/annotations.proto";
+
+// NameEnquirySvc is the service for name enquiry transactions
+service NameEnquirySvc {
+  // GetCustomerName returns the name of the account holder
+  rpc GetAccountHolderName(NameEnquiryRequest) returns (StringValue) {
+    option (google.api.http) = {
+      post: "/api/v1/name-enquiry"
+      body: "*"
+    };
+  }
+}

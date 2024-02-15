@@ -1,0 +1,68 @@
+syntax = "proto3";
+
+package eganow.api.pay_partner;
+
+option go_package = "github.com/eganow/partners/api;pb";
+
+import "eganow/api/common.proto";
+import "eganow/api/pay_partner/fund_transfer_payload.proto";
+import "google/api/annotations.proto";
+import "google/api/httpbody.proto";
+
+// The fund transfer service definition.
+service FundTransferSvc {
+  // Receive money from a customer.
+  rpc CollectionDebitTransaction(FundTransferRequest) returns (FundTransferResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/accounts/debit"
+      body: "*"
+    };
+  }
+
+  // Send money to a customer.
+  rpc PayoutCreditTransaction(FundTransferRequest) returns (FundTransferResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/accounts/credit"
+      body: "*"
+    };
+  }
+
+  // Query transaction status.
+  rpc QueryTransactionStatus(StatusQueryRequest) returns (StatusQueryResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/transactions/status"
+      body: "*"
+    };
+  }
+
+  // Remittance transfer funds.
+  rpc RemittanceTransferFunds(RemittanceTransferRequest) returns (FundTransferResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/remittance/transfer"
+      body: "*"
+    };
+  }
+
+  // Transaction callback from the partner.
+  rpc TransactionCallback(google.api.HttpBody) returns (Empty) {
+    option (google.api.http) = {
+      post: "/api/v1/transactions/ghipss/callback"
+      body: "*"
+    };
+  }
+
+  // MtnMomoTransactionCallback callback from the partner.
+  rpc MtnMomoTransactionCallback(MtnMomoTransactionCallbackRequest) returns (Empty) {
+    option (google.api.http) = {
+      post: "/api/v1/transactions/mtn-momo/callback"
+      body: "*"
+    };
+  }
+
+  rpc AtMoneyTransactionCallback(AtMoneyTransactionCallbackRequest) returns (Empty) {
+    option (google.api.http) = {
+      post: "/api/v1/transactions/at-money/callback"
+      body: "*"
+    };
+  }
+}

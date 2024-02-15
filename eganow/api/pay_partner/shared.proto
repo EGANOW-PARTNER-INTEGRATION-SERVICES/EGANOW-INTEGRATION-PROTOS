@@ -1,0 +1,10 @@
+syntax = "proto3";
+package eganow.api.pay_partner;
+
+option go_package = "github.com/eganow/partners/pay_partner/api;pb";
+
+enum PersonalOrBusinessGroupValue {
+  UNKNOWN = 0;
+  PERSONAL = 1;
+  BUSINESS = 2;
+}
