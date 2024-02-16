@@ -15,4 +15,11 @@ service IdentityCardSvc {
       body: "*"
     };
   }
+
+  rpc NiaIdentityData(NiaRequest) returns (NiaResponse) {
+      option (google.api.http) = {
+        post : "/api/v1/nia",
+        body : "*"
+      };
+  }
 }

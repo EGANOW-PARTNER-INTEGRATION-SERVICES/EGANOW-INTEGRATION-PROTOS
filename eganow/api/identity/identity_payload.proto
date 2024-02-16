@@ -96,3 +96,97 @@ message QoreIdCallbackRequest {
 }
 
 
+message NiaRequest {
+    string pin_number = 1;
+    string data_type = 2;
+    string center = 3;
+    string merchant_key = 4;
+    string image = 5;
+}
+
+message NiaResponse {
+
+  message AddressDetails {
+    string gpsName = 1;
+    string region = 2;
+    string district = 3;
+    string area = 4;
+    string street = 5;
+    string longitude = 6;
+    string latitude = 7;
+  }
+
+  message Address {
+    string type = 1;
+    string community = 2;
+    string postalCode = 3;
+    string town = 4;
+    string countryName = 5;
+    string districtName = 6;
+    string region = 7;
+    string addressDigital = 8;
+    AddressDetails gpsAddressDetails = 9;
+  }
+
+  message PhoneNumber {
+    string type = 1;
+    string phoneNumber = 2;
+    string network = 3;
+  }
+
+  message BiometricFeed {
+    message Face {
+      string dataType = 1;
+      string data = 2;
+    }
+    Face face = 1;
+  }
+
+  message Person {
+    string nationalId = 1;
+    string cardId = 2;
+    string cardValidFrom = 3;
+    string cardValidTo = 4;
+    string surname = 5;
+    string forenames = 6;
+    string nationality = 7;
+    string birthDate = 8;
+    string gender = 9;
+    string birthCountry = 10;
+    string birthDistrict = 11;
+    string birthRegion = 12;
+    string birthTown = 13;
+    repeated Address addresses = 14;
+    message Contact {
+      string email = 1;
+      repeated PhoneNumber phoneNumbers = 2;
+    }
+    Contact contact = 15;
+    repeated Occupation occupations = 16;
+    BiometricFeed biometricFeed = 17;
+  }
+
+  message Occupation {
+    string name = 1;
+  }
+
+  message Data {
+    string transactionGuid = 1;
+    string shortGuid = 2;
+    string requestTimestamp = 3;
+    string responseTimestamp = 4;
+    string verified = 5;
+    string center = 6;
+    bool isException = 7;
+    string source = 8;
+    Person person = 9;
+  }
+
+    Data data = 1;
+    bool success = 2;
+    string code = 3;
+    string msg = 4;
+
+}
+
+
