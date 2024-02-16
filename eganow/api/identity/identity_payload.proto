@@ -1,0 +1,98 @@
+syntax = "proto3";
+
+package eganow.api.identity;
+
+option go_package = "github.com/eganow/partners/api;pb";
+
+message QoreIdCallbackRequest {
+  message Metadata {
+    string idNumber = 1;
+    string type = 2;
+    bool isLive = 3;
+    string imageUrl = 4;
+    string externalDatabaseRefID = 5;
+    bool match = 6;
+    double percentageSimilarity = 7;
+    double matchingThreshold = 8;
+    int32 maxScore = 9;
+    string message = 10;
+  }
+
+  message Applicant {
+    string firstname = 1;
+    string lastname = 2;
+    string phone = 3;
+  }
+
+  message LivenessCheck {
+    bool isLive = 1;
+    string externalDatabaseRefID = 2;
+    string scanResultBlob = 3;
+    bool match = 4;
+    double percentageSimilarity = 5;
+    double matching_threshold = 6;
+    int32 maxScore = 7;
+    string message = 8;
+  }
+
+  message NinCheck {
+    string status = 1;
+    FieldMatches fieldMatches = 2;
+  }
+
+  message FieldMatches {
+    bool firstname = 1;
+    bool lastname = 2;
+    string phoneNumber = 3;
+  }
+  message Status {
+    string state = 1;
+    string status = 2;
+  }
+  message Summary {
+    LivenessCheck liveness_check = 1;
+    NinCheck nin_check = 2;
+  }
+  message Nin {
+    string nin = 1;
+    string firstname = 2;
+    string lastname = 3;
+    string middlename = 4;
+    string phone = 5;
+    string gender = 6;
+    string birthdate = 7;
+    string photo = 8;
+    string imageUrl = 9;
+    Residence residence = 10;
+  }
+  message Residence {
+    string address = 1;
+    string lga = 2;
+    string state = 3;
+  }
+  message Liveness {
+    bool isLive = 1;
+    string externalDatabaseRefID = 2;
+    string scanResultBlob = 3;
+    bool match = 4;
+    double percentageSimilarity = 5;
+    double matchingThreshold = 6;
+    int32 maxScore = 7;
+    string message = 8;
+  }
+  message Body {
+    string id = 1;
+    Metadata metadata = 2;
+    Applicant applicant = 3;
+    Summary summary = 4;
+    Status status = 7;
+    string customerReference = 8;
+    Nin nin = 9;
+    Liveness liveness = 10;
+  }
+
+  Body body = 1;
+
+}
+
+

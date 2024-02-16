@@ -1,0 +1,17 @@
+syntax ="proto3";
+package eganow.api.identity;
+
+option go_package = "github.com/eganow/partners/api;pb";
+
+import "identity_payload.proto";
+import "google/api/annotations.proto";
+import "common.proto";
+
+service IdentityCardSvc {
+  rpc QoreIdCallback(QoreIdCallbackRequest) returns (IdentityStringValue) {
+    option (google.api.http) = {
+      post: "/api/v1/qoreid/callback"
+      body: "*"
+    };
+  }
+}

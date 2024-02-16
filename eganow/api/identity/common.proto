@@ -1,0 +1,9 @@
+syntax = "proto3";
+package eganow.api.identity;
+
+option go_package = "github.com/eganow/partners/api;pb";
+
+message IdentityStringValue {
+  // The string value.
+  string value = 1;
+}
