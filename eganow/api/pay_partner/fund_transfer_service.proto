@@ -4,7 +4,7 @@ package eganow.api.pay_partner;
 
 option go_package = "github.com/eganow/partners/api;pb";
 
-import "eganow/api/common.proto";
+import "eganow/api/pay_partner/common.proto";
 import "eganow/api/pay_partner/fund_transfer_payload.proto";
 import "google/api/annotations.proto";
 import "google/api/httpbody.proto";
@@ -44,7 +44,7 @@ service FundTransferSvc {
   }
 
   // Transaction callback from the partner.
-  rpc TransactionCallback(google.api.HttpBody) returns (Empty) {
+  rpc TransactionCallback(google.api.HttpBody) returns (PayPartnerEmpty) {
     option (google.api.http) = {
       post: "/api/v1/transactions/ghipss/callback"
       body: "*"
@@ -52,14 +52,14 @@ service FundTransferSvc {
   }
 
   // MtnMomoTransactionCallback callback from the partner.
-  rpc MtnMomoTransactionCallback(MtnMomoTransactionCallbackRequest) returns (Empty) {
+  rpc MtnMomoTransactionCallback(MtnMomoTransactionCallbackRequest) returns (PayPartnerEmpty) {
     option (google.api.http) = {
       post: "/api/v1/transactions/mtn-momo/callback"
       body: "*"
     };
   }
 
-  rpc AtMoneyTransactionCallback(AtMoneyTransactionCallbackRequest) returns (Empty) {
+  rpc AtMoneyTransactionCallback(AtMoneyTransactionCallbackRequest) returns (PayPartnerEmpty) {
     option (google.api.http) = {
       post: "/api/v1/transactions/at-money/callback"
       body: "*"

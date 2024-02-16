@@ -6,11 +6,11 @@ option go_package = "github.com/eganow/partners/api;pb";
 import "eganow/api/billpay/airtime_purchase_payload.proto";
 import "eganow/api/billpay/shared_payload.proto";
 import "google/api/annotations.proto";
-import "eganow/api/common.proto";
+import "eganow/api/billpay/common.proto";
 
 service AirtimePurchaseSvc {
   // Purchase is called to initiate a airtime purchase transaction
-  rpc Purchase(AirtimePurchaseRequest) returns (StringValue) {
+  rpc Purchase(AirtimePurchaseRequest) returns (BillPayStringValue) {
     option (google.api.http) = {
       post: "/api/v1/billpay/airtime/purchase"
       body: "*"
@@ -18,7 +18,7 @@ service AirtimePurchaseSvc {
   }
 
   // Callback is called by the partner to notify us of the status of the transaction
-  rpc HubtelAirtimeCallback(CallbackRequest) returns (Empty) {
+  rpc HubtelAirtimeCallback(CallbackRequest) returns (BillPayEmpty) {
     option (google.api.http) = {
       post: "/api/v1/billpay/airtime/callback"
       body: "*"

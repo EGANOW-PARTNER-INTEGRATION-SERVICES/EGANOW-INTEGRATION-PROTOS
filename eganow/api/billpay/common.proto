@@ -1,0 +1,10 @@
+syntax = "proto3";
+package eganow.api.billpay;
+
+option go_package = "github.com/eganow/partners/api;pb";
+
+message BillPayStringValue {
+  string value = 1;
+}
+
+message BillPayEmpty {}

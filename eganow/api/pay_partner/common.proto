@@ -3,8 +3,8 @@ package eganow.api.pay_partner;
 
 option go_package = "github.com/eganow/partners/api;pb";
 
-enum PersonalOrBusinessGroupValue {
-  UNKNOWN = 0;
-  PERSONAL = 1;
-  BUSINESS = 2;
+message PayPartnerStringValue {
+  string value = 1;
 }
+
+message PayPartnerEmpty {}
