@@ -3,8 +3,8 @@ package eganow.api.billpay;
 
 option go_package = "github.com/eganow/partners/api;pb";
 
-import "eganow/api/airtime_purchase_payload.proto";
-import "eganow/api/shared_payload.proto";
+import "eganow/api/billpay/airtime_purchase_payload.proto";
+import "eganow/api/billpay/shared_payload.proto";
 import "google/api/annotations.proto";
 import "eganow/api/common.proto";
 
