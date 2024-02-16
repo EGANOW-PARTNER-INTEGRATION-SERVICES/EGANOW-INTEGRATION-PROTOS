@@ -3,9 +3,7 @@ package eganow.api.billpay;
 
 option go_package = "github.com/eganow/partners/api;pb";
 
-import "eganow/api/billpay/data_purchase_payload.proto";
 import "eganow/api/billpay/shared_payload.proto";
-import "google/api/annotations.proto";
 import "google/api/field_behavior.proto";
 
 message AirtimePurchaseRequest {
