@@ -45,14 +45,17 @@ message QoreIdCallbackRequest {
     bool lastname = 2;
     string phoneNumber = 3;
   }
+
   message Status {
     string state = 1;
     string status = 2;
   }
+
   message Summary {
     LivenessCheck liveness_check = 1;
     NinCheck nin_check = 2;
   }
+
   message Nin {
     string nin = 1;
     string firstname = 2;
@@ -65,11 +68,13 @@ message QoreIdCallbackRequest {
     string imageUrl = 9;
     Residence residence = 10;
   }
+
   message Residence {
     string address = 1;
     string lga = 2;
     string state = 3;
   }
+
   message Liveness {
     bool isLive = 1;
     string externalDatabaseRefID = 2;
@@ -80,6 +85,7 @@ message QoreIdCallbackRequest {
     int32 maxScore = 7;
     string message = 8;
   }
+
   message Body {
     string id = 1;
     Metadata metadata = 2;
