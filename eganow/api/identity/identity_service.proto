@@ -3,9 +3,10 @@ package eganow.api.identity;
 
 option go_package = "github.com/eganow/partners/api;pb";
 
-import "identity_payload.proto";
+import "eganow/api/identity/identity_payload.proto";
 import "google/api/annotations.proto";
-import "common.proto";
+import "eganow/api/identity/common.proto";
+
 
 service IdentityCardSvc {
   rpc QoreIdCallback(QoreIdCallbackRequest) returns (IdentityStringValue) {
