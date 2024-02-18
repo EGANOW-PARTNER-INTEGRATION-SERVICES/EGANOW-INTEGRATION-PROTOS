@@ -7,7 +7,6 @@ import "eganow/api/billpay/ecg_purchase_payload.proto";
 import "eganow/api/billpay/shared_payload.proto";
 import "google/api/annotations.proto";
 import "eganow/api/billpay/common.proto";
-import "google/api/field_behavior.proto";
 
 service ElectricityCreditPurchaseSvc {
   rpc QueryMeterDetailsWithPhoneNumber(BillPayStringValue) returns (QueryMeterDetailsResponse) {
