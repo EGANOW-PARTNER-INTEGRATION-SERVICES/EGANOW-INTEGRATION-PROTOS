@@ -13,7 +13,7 @@ enum TransactionStatus {
 enum TransactionType {
   COLLECTION = 0;
   PAYOUT = 1;
-  REMITTTANCE = 2; // for remittance (GHIPSS)
+  REMITTANCE = 2; // for remittance (GHIPSS)
 }
 
 message TransLogMomoBankMerchant {
