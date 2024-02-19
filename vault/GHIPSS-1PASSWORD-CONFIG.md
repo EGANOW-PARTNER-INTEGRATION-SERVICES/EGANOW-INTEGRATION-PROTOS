@@ -19,8 +19,8 @@ type KeystoreConfig struct {
 	IsProduction bool // set up in the loadFromEnv function
 	
 	// database
-	publicDbConnUrl   string `opitem:"PUBLIC_PAY_PARTNER_TRANSACTION_DB_URL" opfield:"server"`
-	localDbConnUrl    string `opitem:"LOCAL_PAY_PARTNER_TRANSACTION_DB_URL" opfield:"server"`
+	PublicDbConnUrl   string `opitem:"PUBLIC_PAY_PARTNER_TRANSACTION_DB_URL" opfield:"server"`
+	LocalDbConnUrl    string `opitem:"LOCAL_PAY_PARTNER_TRANSACTION_DB_URL" opfield:"server"`
 	DbConnUrl         string
 	DataSourceTimeout time.Duration
 	
