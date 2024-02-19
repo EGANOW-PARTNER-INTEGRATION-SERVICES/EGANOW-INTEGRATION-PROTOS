@@ -45,9 +45,6 @@ message FundTransferResponse {
 // StatusQueryRequest is the request message for the StatusQuery RPC.
 message StatusQueryRequest {
   message BankStatusQueryRequest {
-    float amount = 1 [(google.api.field_behavior) = REQUIRED];
-    string account_number = 2 [(google.api.field_behavior) = REQUIRED];
-    string bank_code = 3 [(google.api.field_behavior) = REQUIRED];
     string transaction_reference_number = 4 [(google.api.field_behavior) = REQUIRED];
   }
 
