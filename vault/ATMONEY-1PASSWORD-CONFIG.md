@@ -12,14 +12,16 @@ type KeystoreConfig struct {
 	HttpServerPort string // from env
 	HttpServerHost string // from env
 	
-	//base url
+	// base url
 	BaseUrl string // from env
 	
 	// environment
 	IsProduction bool // set up in the loadFromEnv function
 	
 	// database
-	DbConnUrl         string `opitem:"PUBLIC_PAY_PARTNER_TRANSACTION_DB_URL" opfield:"server"`
+	publicDbConnUrl   string `opitem:"PUBLIC_PAY_PARTNER_TRANSACTION_DB_URL" opfield:"server"`
+	localDbConnUrl    string `opitem:"LOCAL_PAY_PARTNER_TRANSACTION_DB_URL" opfield:"server"`
+	DbConnUrl         string
 	DataSourceTimeout time.Duration
 	
 	// cache
@@ -32,6 +34,8 @@ type KeystoreConfig struct {
 	ClientSecret   string `opitem:"ATMONEY_PAY_PARTNER_CREDENTIALS" opfield:"credential"`
 	MerchantNumber string `opitem:"ATMONEY_PAY_PARTNER_CREDENTIALS" opfield:"merchant_number"`
 	PayPartnerId   string `opitem:"ATMONEY_PAY_PARTNER_CREDENTIALS" opfield:"pay_partner_id"`
+	
+	// @todo -> add the remaining fields below
 }
 
 ```
