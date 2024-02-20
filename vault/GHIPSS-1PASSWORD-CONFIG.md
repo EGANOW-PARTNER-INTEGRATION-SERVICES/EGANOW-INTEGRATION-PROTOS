@@ -32,7 +32,7 @@ type KeystoreConfig struct {
 	// partner credentials
 	BasicAuthUsername  string `opitem:"GHIPSS_BASIC_AUTH" opfield:"username"`
 	BasicAuthPassword  string `opitem:"GHIPSS_BASIC_AUTH" opfield:"credential"`
-	EganowPayPartnerId string `opitem:"GHIPSS_PAY_PARTNER_ID" opfield:"password"`
+	EganowPayPartnerId string `opitem:"EGANOW_PAY_PARTNER_CREDENTIALS" opfield:"ghipss"`
 	
 	// @todo -> add the remaining fields below
 }

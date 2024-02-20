@@ -33,7 +33,7 @@ type KeystoreConfig struct {
 	ClientKey      string `opitem:"ATMONEY_PAY_PARTNER_CREDENTIALS" opfield:"username"`
 	ClientSecret   string `opitem:"ATMONEY_PAY_PARTNER_CREDENTIALS" opfield:"credential"`
 	MerchantNumber string `opitem:"ATMONEY_PAY_PARTNER_CREDENTIALS" opfield:"merchant_number"`
-	PayPartnerId   string `opitem:"ATMONEY_PAY_PARTNER_CREDENTIALS" opfield:"pay_partner_id"`
+	PayPartnerId   string `opitem:"EGANOW_PAY_PARTNER_CREDENTIALS" opfield:"atmoney"`
 	
 	// @todo -> add the remaining fields below
 }
