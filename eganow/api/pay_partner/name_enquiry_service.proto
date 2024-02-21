@@ -13,7 +13,14 @@ service NameEnquirySvc {
   // GetCustomerName returns the name of the account holder
   rpc GetAccountHolderName(NameEnquiryRequest) returns (PayPartnerStringValue) {
     option (google.api.http) = {
-      post: "/api/v1/name-enquiry"
+      post: "/api/v1/enquiries/accounts/name"
+      body: "*"
+    };
+  }
+
+  rpc GetQrAccountHolderName(NameEnquiryRequest) returns (PayPartnerStringValue) {
+    option (google.api.http) = {
+      post: "/api/v1/enquiries/qr/name"
       body: "*"
     };
   }
