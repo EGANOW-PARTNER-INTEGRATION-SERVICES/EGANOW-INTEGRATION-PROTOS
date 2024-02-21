@@ -72,4 +72,7 @@ service FundTransferSvc {
       body: "*"
     };
   }
+
+  // @todo -> add callback for GHQR transactions
+
 }
