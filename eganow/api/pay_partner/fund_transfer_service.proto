@@ -21,7 +21,7 @@ service FundTransferSvc {
   // Receive money from a customer.
   rpc CollectionDebitTransaction(FundTransferRequest) returns (FundTransferResponse) {
     option (google.api.http) = {
-      post: "/api/v1/transactions/debit"
+      post: "/api/v1/transactions/collection-debit"
       body: "*"
     };
   }
@@ -29,7 +29,7 @@ service FundTransferSvc {
   // Send money to a customer.
   rpc PayoutCreditTransaction(FundTransferRequest) returns (FundTransferResponse) {
     option (google.api.http) = {
-      post: "/api/v1/transactions/credit"
+      post: "/api/v1/transactions/payout-credit"
       body: "*"
     };
   }
