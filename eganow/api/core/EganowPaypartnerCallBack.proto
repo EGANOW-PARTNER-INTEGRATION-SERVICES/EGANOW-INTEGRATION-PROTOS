@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+option csharp_namespace = "EganowGrpcCustomerMTGlobalApi.CustAndPaymentApi.Protos";
+option go_package = "github.com/eganow/partners/api;pb";
+
+package EganowPaypartnerCallBack;
+
+
+//// The CustomerAccount service definition.
+service EganowPaypartnerCallBackSvc {
+  ////------ money transfer service
+  rpc ConfirmSenderPaypartnerTransactionStatus (EganowPaypartnerCallRequestMessage) returns (EganowPaypartnerCallBackEmptyMessage);
+
+
+}
+
+
+
+
+
+/////messages
+message EganowPaypartnerCallBackEmptyMessage {
+
+}
+
+
+message EganowPaypartnerCallRequestMessage {
+  string eganowTransRefNo = 1;
+  string countryCode = 2;
+  string transactionStatusFromPartner = 3;
+  string partnerSuccessorFailMessage = 4;
+}
+
+

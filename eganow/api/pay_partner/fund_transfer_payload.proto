@@ -34,8 +34,6 @@ message FundTransferRequest {
   string currency_iso = 9; // optional (defaults to GHS)
   string transaction_reference_number = 10; // optional
 
-  string callback_url = 11; // (MTN, VODAFONE, AIRTEL-TIGO)
-
   string pay_partner_id = 12 [(google.api.field_behavior) = REQUIRED];
 }
 
