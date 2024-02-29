@@ -39,7 +39,7 @@ message FundTransferRequest {
 
 // TransferFundsResponse is the response message for the TransferFunds RPC.
 message FundTransferResponse {
-  TransactionStatus transaction_status = 1;
+  string transaction_status = 1;
   string reference_number = 2;
   string response_payload_json = 3; // JSON string of the response payload (required by Eganow Merchant API)
   string api_response_message = 5; // response message from the API
