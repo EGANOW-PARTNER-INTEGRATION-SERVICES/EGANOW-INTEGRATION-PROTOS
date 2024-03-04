@@ -18,7 +18,7 @@ service NameEnquirySvc {
     };
   }
 
-  rpc GetQrAccountHolderName(NameEnquiryRequest) returns (PayPartnerStringValue) {
+  rpc GetQrAccountHolderName(NameEnquiryRequest) returns (QrNameEnquiryResponse) {
     option (google.api.http) = {
       post: "/api/v1/enquiries/qr/name"
       body: "*"

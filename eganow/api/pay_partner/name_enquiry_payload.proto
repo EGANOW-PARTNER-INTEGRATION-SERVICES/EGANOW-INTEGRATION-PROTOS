@@ -28,3 +28,8 @@ message NameEnquiryRequest {
   //required for GHIPSS
   RequestType request_type = 4;
 }
+
+message QrNameEnquiryResponse {
+  string name = 1;
+  string qr_code = 2;
+}

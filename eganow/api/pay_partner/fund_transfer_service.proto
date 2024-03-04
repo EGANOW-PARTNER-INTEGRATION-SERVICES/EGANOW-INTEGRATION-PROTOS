@@ -50,8 +50,8 @@ service FundTransferSvc {
     };
   }
 
-  // Transaction callback from the partner.
-  rpc TransactionCallback(google.api.HttpBody) returns (PayPartnerEmpty) {
+  // Transaction callback from the partner. (For GHIPSS)
+  rpc GhQrTransactionCallback(GhQrTransactionCallbackRequest) returns (PayPartnerEmpty) {
     option (google.api.http) = {
       post: "/api/v1/transactions/ghipss/callback"
       body: "*"

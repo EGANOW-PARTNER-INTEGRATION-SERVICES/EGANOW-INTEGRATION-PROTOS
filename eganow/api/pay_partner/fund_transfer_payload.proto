@@ -103,3 +103,8 @@ message AtMoneyTransactionCallbackRequest {
   string trans_ref = 3;
   string message = 4;
 }
+
+// GhQrTransactionCallbackRequest
+message GhQrTransactionCallbackRequest {
+  // @todo -> add fields here
+}
