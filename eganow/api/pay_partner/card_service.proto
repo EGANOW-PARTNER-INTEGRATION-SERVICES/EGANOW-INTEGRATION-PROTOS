@@ -23,7 +23,7 @@ service CardSvc {
     };
   }
 
-  rpc GetCardTransactions(GetCardTransactionsRequest) returns () {
+  rpc GetCardTransactions(GetCardTransactionsRequest) returns (CardTransactionList) {
     option (google.api.http) = {
       post: "/api/v1/cards/transactions"
       body: "*"

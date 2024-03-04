@@ -49,3 +49,7 @@ message CardTransaction {
 
   // @todo -> add fields here
 }
+
+message CardTransactionList {
+  repeated CardTransaction transactions = 1; // list of transactions
+}
