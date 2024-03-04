@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package eganow.api.pay_partner;
+
+option go_package = "github.com/eganow/partners/api;pb";
+
+enum CardType {
+  cardNumber = 0;
+  externalCardId = 1;
+  cardGUID = 2;
+}

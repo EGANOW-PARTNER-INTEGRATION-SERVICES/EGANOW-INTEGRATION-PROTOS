@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package eganow.api.pay_partner;
+
+option go_package = "github.com/eganow/partners/api;pb";
+
+import "google/api/annotations.proto";
+import "eganow/api/pay_partner/card_payload.proto";
+import "eganow/api/pay_partner/common.proto";
+
+service CardSvc {
+  rpc GetCardDetails(GetCardRequest) returns (GetCardResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/cards/details"
+      body: "*"
+    };
+  }
+
+  rpc CreateCard(CreateCardRequest) returns (CreateCardResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/cards"
+      body: "*"
+    };
+  }
+
+  rpc GetCardTransactions(GetCardTransactionsRequest) returns () {
+    option (google.api.http) = {
+      post: "/api/v1/cards/transactions"
+      body: "*"
+    };
+  }
+}

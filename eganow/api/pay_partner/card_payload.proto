@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package eganow.api.pay_partner;
+
+option go_package = "github.com/eganow/partners/api;pb";
+import "google/api/field_behavior.proto";
+import "eganow/api/pay_partner/card_entity.proto";
+
+message GetCardRequest {
+  string card_number = 1 [(google.api.field_behavior) = REQUIRED]; // card number (25 chars)
+  CardType card_type = 2 [(google.api.field_behavior) = REQUIRED];
+}
+
+message GetCardResponse {
+  string card_number = 1; // card number (25 chars)
+  string card_holder_name = 2; // card holder name
+  string activation_date = 3; // date of card activation (YYYY-MM-DD)
+  string expiry_date = 4; // date of card expiry (YYYY-MM-DD)
+  string masked_card_number = 5; // masked card number (1234********1234)
+  bool is_virtual = 6; // is virtual card
+
+  // @todo -> add fields here
+}
+
+message CreateCardRequest {
+  // @todo -> add fields here
+}
+
+message CreateCardResponse {
+  // @todo -> add fields here
+}
+
+message GetCardTransactionsRequest {
+  string card_number = 1 [(google.api.field_behavior) = REQUIRED]; // card number (25 chars)
+  CardType card_type = 2 [(google.api.field_behavior) = REQUIRED];
+  string start_date = 3 [(google.api.field_behavior) = REQUIRED]; // start date of transactions (YYYY-MM-DD)
+  string end_date = 4; // end date of transactions (YYYY-MM-DD)
+  int32 page = 5; // page number (default to 1 if not provided)
+  int32 page_size = 6; // page size (default to 50 if not provided)
+}
+
+message CardTransaction {
+  string id = 1; // transaction id
+  string date = 2; // transaction date (YYYY-MM-DD)
+  CardType type = 3; // transaction type
+  float amount = 4; // transaction amount
+  string currency = 5; // transaction currency
+  string description = 6; // transaction description
+
+  // @todo -> add fields here
+}
