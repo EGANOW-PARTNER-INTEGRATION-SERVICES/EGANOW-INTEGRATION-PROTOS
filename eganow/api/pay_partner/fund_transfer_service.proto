@@ -50,14 +50,6 @@ service FundTransferSvc {
     };
   }
 
-  // Transaction callback from the partner. (For GHIPSS)
-  rpc GhQrTransactionCallback(GhQrTransactionCallbackRequest) returns (PayPartnerEmpty) {
-    option (google.api.http) = {
-      post: "/api/v1/transactions/ghipss/callback"
-      body: "*"
-    };
-  }
-
   // MtnMomoTransactionCallback callback from the partner.
   rpc MtnMomoTransactionCallback(MtnMomoTransactionCallbackRequest) returns (PayPartnerEmpty) {
     option (google.api.http) = {
@@ -73,6 +65,17 @@ service FundTransferSvc {
     };
   }
 
-  // @todo -> add callback for GHQR transactions
+  rpc ReverseTransaction(ReverseTransactionRequest) returns (WebServiceResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/transactions/reverse"
+      body: "*"
+    };
+  }
 
+  rpc QrCreditTransactionWebService(QrCreditTransactionWebServiceRequest) returns (WebServiceResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/qr/credit/web-service"
+      body: "*"
+    };
+  }
 }

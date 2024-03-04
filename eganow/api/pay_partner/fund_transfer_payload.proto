@@ -104,7 +104,33 @@ message AtMoneyTransactionCallbackRequest {
   string message = 4;
 }
 
-// GhQrTransactionCallbackRequest
-message GhQrTransactionCallbackRequest {
-  // @todo -> add fields here
+message ReverseTransactionRequest {
+  string senderInstitution = 1 [(google.api.field_behavior) = REQUIRED];
+  string transactionAmount = 2 [(google.api.field_behavior) = REQUIRED];
+  string externalRef = 3 [(google.api.field_behavior) = REQUIRED];
+  string trackingNum = 4 [(google.api.field_behavior) = REQUIRED];
+  string reversalDate = 5 [(google.api.field_behavior) = REQUIRED];
+  string transactionId = 6 [(google.api.field_behavior) = REQUIRED];
 }
+
+message QrCreditTransactionWebServiceRequest {
+  string senderAccount = 1 [(google.api.field_behavior) = REQUIRED];
+  string Sendername = 10 [(google.api.field_behavior) = REQUIRED];
+  string senderInstitution = 2 [(google.api.field_behavior) = REQUIRED];
+  string receiverAccount = 3 [(google.api.field_behavior) = REQUIRED];
+  string transactionAmount = 4 [(google.api.field_behavior) = REQUIRED];
+  string narration = 5 [(google.api.field_behavior) = REQUIRED];
+  string externalRef = 6 [(google.api.field_behavior) = REQUIRED];
+  string trackingNum = 7 [(google.api.field_behavior) = REQUIRED];
+  string transactionDate = 8 [(google.api.field_behavior) = REQUIRED];
+  string qrCode = 9 [(google.api.field_behavior) = REQUIRED];
+}
+
+message WebServiceResponse {
+  string errorCode = 1;
+  string errorMessage = 2;
+  string externalRef = 3;
+  string transactionId = 4;
+}
+
+
