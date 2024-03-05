@@ -12,7 +12,6 @@ message GetCardRequest {
 }
 
 message GetCardResponse {
-  string card_number = 1; // card number (25 chars)
   string card_holder_name = 2; // card holder name
   string activation_date = 3; // date of card activation (YYYY-MM-DD)
   string expiry_date = 4; // date of card expiry (YYYY-MM-DD)
@@ -23,12 +22,22 @@ message GetCardResponse {
 }
 
 message CreateCardRequest {
-  // @todo -> add fields here
+  string card_holder_name = 4;
+  bool is_virtual = 5;
 }
 
 message CreateCardResponse {
-  // @todo -> add fields here
+  string card_activation_date = 1;
+  string card_date_open = 2;
+  string card_expiry_date = 3;
+  string card_role = 4;
+  string currency = 5;
+  string external_card_id = 6;
+  bool is_virtual = 7;
+  string masked_card_number = 8;
+  string product_code = 9;
 }
+
 
 message GetCardTransactionsRequest {
   string card_number = 1 [(google.api.field_behavior) = REQUIRED]; // card number (25 chars)
@@ -53,3 +62,8 @@ message CardTransaction {
 message CardTransactionList {
   repeated CardTransaction transactions = 1; // list of transactions
 }
+
+
+
+
+
