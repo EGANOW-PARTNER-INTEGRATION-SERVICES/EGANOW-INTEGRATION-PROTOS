@@ -89,7 +89,7 @@ message CreateCardResponse {
 
 message GetCardTransactionsRequest {
   string card_number = 1 [(google.api.field_behavior) = REQUIRED]; // card number (25 chars)
-  string card_type = 2 [(google.api.field_behavior) = REQUIRED];
+  CardType card_type = 2 [(google.api.field_behavior) = REQUIRED];
   string start_date = 3 [(google.api.field_behavior) = REQUIRED]; // start date of transactions (YYYY-MM-DD)
   string end_date = 4; // end date of transactions (YYYY-MM-DD)
   int32 page = 5; // page number (default to 1 if not provided)
@@ -99,7 +99,7 @@ message GetCardTransactionsRequest {
 message CardTransaction {
   string id = 1; // transaction id
   string date = 2; // transaction date (YYYY-MM-DD)
-  CardType type = 3; // transaction type
+  string type = 3; // transaction type
   float amount = 4; // transaction amount
   string currency = 5; // transaction currency
   string description = 6; // transaction description
