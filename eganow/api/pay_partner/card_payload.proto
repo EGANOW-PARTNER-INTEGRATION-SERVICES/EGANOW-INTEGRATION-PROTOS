@@ -28,6 +28,7 @@ message CreateCardRequest {
   IdentityProofDocument identity_proof_document = 4;
   bool is_virtual = 5;
   repeated Addresses addresses = 6;
+  BankDetails bank_detail = 7;
 }
 
 
@@ -62,6 +63,10 @@ message Addresses {
   string country = 9;
   string zip = 10;
   string state = 11;
+}
+message BankDetails {
+   string account_number = 1;
+   string branch_code = 2;
 }
 message IdentityProofDocument {
   string type = 1;
