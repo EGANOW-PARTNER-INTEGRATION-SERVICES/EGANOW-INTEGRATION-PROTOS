@@ -65,7 +65,8 @@ message StatusQueryRequest {
 // StatusQueryResponse is the response message for the StatusQuery RPC.
 message StatusQueryResponse {
   string transaction_id = 1;
-  TransactionStatus status = 2; // status iof the transaction
+  string status = 2; // status iof the transaction
+//  TransactionStatus status = 2; // status iof the transaction
 }
 
 // RemittanceTransferFundsRequest is the request message for the RemittanceTransferFunds RPC.
