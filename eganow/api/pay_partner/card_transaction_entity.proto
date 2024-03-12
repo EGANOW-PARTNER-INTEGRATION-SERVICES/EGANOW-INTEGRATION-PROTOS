@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package eganow.api.pay_partner;
+
+option go_package = "github.com/eganow/partners/api;pb";
+
+import "google/api/field_behavior.proto";
+
+
+enum GatewayRecommendation {
+  GATEWAY_RECOMMENDATION_UNSPECIFIED = 0;
+  GATEWAY_RECOMMENDATION_PROCEED = 1;
+}
+
+enum GatewayAuthenticationResult {
+  GATEWAY_AUTHENTICATION_RESULT_UNSPECIFIED = 0;
+  GATEWAY_AUTHENTICATION_RESULT_SUCCESS = 1;
+}

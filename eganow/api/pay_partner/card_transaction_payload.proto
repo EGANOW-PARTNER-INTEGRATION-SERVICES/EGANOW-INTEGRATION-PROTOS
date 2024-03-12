@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package eganow.api.pay_partner;
+
+option go_package = "github.com/eganow/partners/api;pb";
+
+import "google/api/field_behavior.proto";
+import "eganow/api/pay_partner/card_transaction_entity.proto";
+
+message PayTransactionRequest {
+  message TransactionCardInfo {
+    string card_number = 1 [(google.api.field_behavior) = REQUIRED];
+    string card_holder_name = 2 [(google.api.field_behavior) = REQUIRED];
+    string card_expiration_month = 3 [(google.api.field_behavior) = REQUIRED];
+    string card_expiration_year = 4 [(google.api.field_behavior) = REQUIRED];
+    string card_cvv = 5 [(google.api.field_behavior) = REQUIRED];
+  }
+
+  string currency = 1 [(google.api.field_behavior) = REQUIRED];
+  float value = 2 [(google.api.field_behavior) = REQUIRED];
+  TransactionCardInfo card_info = 3 [(google.api.field_behavior) = REQUIRED];
+}
+
+message MpgsPayCallbackRequest {
+  string order_id = 1 [(google.api.field_behavior) = REQUIRED];
+  string transaction_id = 2 [(google.api.field_behavior) = REQUIRED];
+  string response_gatewayRecommendation = 3 [(google.api.field_behavior) = REQUIRED]; // important!!!
+  string delegate = 4 [(google.api.field_behavior) = REQUIRED];
+  string result = 5 [(google.api.field_behavior) = REQUIRED]; // important!!!
+}

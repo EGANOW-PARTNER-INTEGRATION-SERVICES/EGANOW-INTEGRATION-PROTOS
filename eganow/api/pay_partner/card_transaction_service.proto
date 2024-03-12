@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package eganow.api.pay_partner;
+
+option go_package = "github.com/eganow/partners/api;pb";
+
+import "google/api/annotations.proto";
+import "eganow/api/pay_partner/card_transaction_payload.proto";
+import "eganow/api/pay_partner/common.proto";
+
+service CardTransactionSvc {
+  rpc InitiatePay(PayTransactionRequest) returns (PayPartnerStringValue) {
+    option (google.api.http) = {
+      post: "/api/v1/cards/transactions/pay/complete"
+      body: "*"
+    };
+  }
+
+  rpc HandleMpgsPayCallback(MpgsPayCallbackRequest) returns (PayPartnerEmpty) {
+    option (google.api.http) = {
+      post: "/api/v1/cards/transactions/pay/callback"
+      body: "*"
+    };
+  }
+}

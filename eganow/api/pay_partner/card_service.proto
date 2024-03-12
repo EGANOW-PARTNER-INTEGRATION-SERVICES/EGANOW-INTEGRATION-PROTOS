@@ -30,3 +30,19 @@ service CardSvc {
     };
   }
 }
+
+/*
+rpc InitiatePay(PayTransactionRequest) returns (PayTransactionResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/cards/transactions/pay/complete"
+      body: "*"
+    };
+  }
+
+  rpc CompletePay(PayTransactionRequest) returns (PayTransactionResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/cards/transactions/pay/complete"
+      body: "*"
+    };
+  }
+*/
