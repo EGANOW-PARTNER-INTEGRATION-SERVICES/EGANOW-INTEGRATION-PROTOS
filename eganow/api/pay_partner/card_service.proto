@@ -6,7 +6,6 @@ option go_package = "github.com/eganow/partners/api;pb";
 
 import "google/api/annotations.proto";
 import "eganow/api/pay_partner/card_payload.proto";
-import "eganow/api/pay_partner/common.proto";
 
 service CardSvc {
   rpc GetCardDetails(GetCardRequest) returns (GetCardResponse) {
@@ -30,19 +29,3 @@ service CardSvc {
     };
   }
 }
-
-/*
-rpc InitiatePay(PayTransactionRequest) returns (PayTransactionResponse) {
-    option (google.api.http) = {
-      post: "/api/v1/cards/transactions/pay/complete"
-      body: "*"
-    };
-  }
-
-  rpc CompletePay(PayTransactionRequest) returns (PayTransactionResponse) {
-    option (google.api.http) = {
-      post: "/api/v1/cards/transactions/pay/complete"
-      body: "*"
-    };
-  }
-*/

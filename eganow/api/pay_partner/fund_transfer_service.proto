@@ -7,7 +7,6 @@ option go_package = "github.com/eganow/partners/api;pb";
 import "eganow/api/pay_partner/common.proto";
 import "eganow/api/pay_partner/fund_transfer_payload.proto";
 import "google/api/annotations.proto";
-import "google/api/httpbody.proto";
 
 // The fund transfer service definition.
 service FundTransferSvc {

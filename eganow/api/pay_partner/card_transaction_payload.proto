@@ -5,7 +5,6 @@ package eganow.api.pay_partner;
 option go_package = "github.com/eganow/partners/api;pb";
 
 import "google/api/field_behavior.proto";
-import "eganow/api/pay_partner/card_transaction_entity.proto";
 
 message PayTransactionRequest {
   message TransactionCardInfo {

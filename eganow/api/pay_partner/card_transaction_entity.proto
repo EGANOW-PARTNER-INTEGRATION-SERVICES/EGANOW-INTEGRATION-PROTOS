@@ -4,8 +4,6 @@ package eganow.api.pay_partner;
 
 option go_package = "github.com/eganow/partners/api;pb";
 
-import "google/api/field_behavior.proto";
-
 
 enum GatewayRecommendation {
   GATEWAY_RECOMMENDATION_UNSPECIFIED = 0;
