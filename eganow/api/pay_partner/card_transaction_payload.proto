@@ -17,8 +17,9 @@ message PayTransactionRequest {
   }
 
   string currency = 1 [(google.api.field_behavior) = REQUIRED];
-  float value = 2 [(google.api.field_behavior) = REQUIRED];
-  TransactionCardInfo card_info = 3 [(google.api.field_behavior) = REQUIRED];
+  float transaction_amount = 2 [(google.api.field_behavior) = REQUIRED];
+  float tax_amount = 3 [(google.api.field_behavior) = REQUIRED];
+  TransactionCardInfo card_info = 4 [(google.api.field_behavior) = REQUIRED];
 }
 
 message MpgsPayCallbackRequest {
