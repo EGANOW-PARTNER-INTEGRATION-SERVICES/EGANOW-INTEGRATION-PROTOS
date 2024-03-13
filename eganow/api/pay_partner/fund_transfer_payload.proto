@@ -66,7 +66,7 @@ message StatusQueryRequest {
 message StatusQueryResponse {
   string transaction_id = 1;
   string status = 2; // status iof the transaction
-//  TransactionStatus status = 2; // status iof the transaction
+  //  TransactionStatus status = 2; // status iof the transaction
 }
 
 // RemittanceTransferFundsRequest is the request message for the RemittanceTransferFunds RPC.
@@ -99,9 +99,9 @@ message MtnMomoTransactionCallbackRequest {
 
 // AtMoneyTransactionCallbackRequest is the request message for the AtMoneyTransactionCallback RPC.
 message AtMoneyTransactionCallbackRequest {
-  string trans_id = 1;
+  string trans_id = 1; // numeric transaction id sent to the partner
   string trans_status = 2;
-  string trans_ref = 3;
+  string trans_ref = 3; // external reference (from initial request)
   string message = 4;
 }
 
