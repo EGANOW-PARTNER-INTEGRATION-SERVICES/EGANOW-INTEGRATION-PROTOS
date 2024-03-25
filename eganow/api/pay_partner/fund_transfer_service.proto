@@ -71,9 +71,18 @@ service FundTransferSvc {
     };
   }
 
+  // QRC
   rpc QrCreditTransactionWebService(QrCreditTransactionWebServiceRequest) returns (WebServiceResponse) {
     option (google.api.http) = {
       post: "/api/v1/qr/credit/web-service"
+      body: "*"
+    };
+  }
+
+  // REQUEST TO PAY
+  rpc CollectionDebitTransactionWebService(CollectionDebitTransactionWebServiceRequest) returns (WebServiceResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/transactions/rtp/callback"
       body: "*"
     };
   }

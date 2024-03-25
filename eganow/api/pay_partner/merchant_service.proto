@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package eganow.api.pay_partner;
+
+option go_package = "github.com/eganow/partners/api;pb";
+
+import "google/api/annotations.proto";
+import "eganow/api/pay_partner/common.proto";
+import "eganow/api/pay_partner/merchant_payload.proto";
+
+service MerchantSvc {
+  rpc CreateMerchant(CreateOrUpdateMerchantRequest) returns (PayPartnerEmpty) {
+    option (google.api.http) = {
+      post: "/api/v1/merchants"
+      body: "*"
+    };
+  }
+
+  rpc UpdateMerchant(CreateOrUpdateMerchantRequest) returns (PayPartnerEmpty) {
+    option (google.api.http) = {
+      put: "/api/v1/merchants"
+      body: "*"
+    };
+  }
+
+  rpc DeleteMerchant(PayPartnerStringValue) returns (PayPartnerEmpty) {
+    option (google.api.http) = {
+      delete: "/api/v1/merchants/{value}"
+      body: "*"
+    };
+  }
+
+  rpc GetMerchant(PayPartnerStringValue) returns (MerchantPayload) {
+    option (google.api.http) = {
+      get: "/api/v1/merchants/{value}"
+    };
+  }
+
+  rpc ListAllMerchants(PayPartnerEmpty) returns (ListMerchantsResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/merchants"
+    };
+  }
+}

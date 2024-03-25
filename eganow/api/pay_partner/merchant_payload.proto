@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package eganow.api.pay_partner;
+
+option go_package = "github.com/eganow/partners/api;pb";
+
+import "google/api/field_behavior.proto";
+
+message CreateOrUpdateMerchantRequest {
+  string merchant_id = 1 [(google.api.field_behavior) = REQUIRED];
+  string merchant_name = 2 [(google.api.field_behavior) = REQUIRED];
+  string account_name = 3 [(google.api.field_behavior) = REQUIRED];
+  string branch_code = 4 [(google.api.field_behavior) = REQUIRED];
+}
+
+message MerchantPayload {
+  string institution_id = 1;
+  string name = 3;
+  string account_number = 4;
+}
+
+message ListMerchantsResponse {
+  repeated MerchantPayload merchants = 1;
+}

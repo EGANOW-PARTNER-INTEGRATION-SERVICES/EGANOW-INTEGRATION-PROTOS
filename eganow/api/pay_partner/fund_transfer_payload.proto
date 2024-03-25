@@ -127,6 +127,20 @@ message QrCreditTransactionWebServiceRequest {
   string qrCode = 9 [(google.api.field_behavior) = REQUIRED];
 }
 
+message CollectionDebitTransactionWebServiceRequest {
+  string billerId = 1;
+  string billId = 2;
+  string billDate = 3;
+  string billAmount = 4;
+  string billDescription = 5;
+  string payerName = 6;
+  string payerInstitutionId = 7;
+  string payerAccountNumber = 8;
+  string status = 9;
+  string requestTimestamp = 10;
+  string requestSignature = 11;
+}
+
 message WebServiceResponse {
   string errorCode = 1;
   string errorMessage = 2;
