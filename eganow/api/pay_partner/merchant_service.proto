@@ -26,7 +26,6 @@ service MerchantSvc {
   rpc DeleteMerchant(PayPartnerStringValue) returns (PayPartnerEmpty) {
     option (google.api.http) = {
       delete: "/api/v1/merchants/{value}"
-      body: "*"
     };
   }
 
