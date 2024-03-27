@@ -10,15 +10,20 @@ import "eganow/api/pay_partner/fund_transfer_entity.proto";
 // TransferFundsRequest is the request message for the TransferFunds RPC.
 message FundTransferRequest {
   message BankFundTransferRequest {
-    string source_account_number = 2 [(google.api.field_behavior) = REQUIRED];
-    string source_account_name = 3; // optional
+    string source_account_number = 2 [(google.api.field_behavior) = REQUIRED]; // aka payer account number (for RTP)
+    string source_account_name = 3; // optional // aka payer name (for RTP)
     string destination_account_number = 4 [(google.api.field_behavior) = REQUIRED];
     string destination_account_name = 5; // optional
     string bank_code = 6 [(google.api.field_behavior) = REQUIRED];
+
+    // additional fields for GHQR
     oneof qr_data {
       string qrcode = 7; // optional (required for GHQR - GHIPSS)
       string terminal_id = 8; // optional (required for GHIPSS)
     }
+
+    // additional field for RTP
+    string merchant_id = 1; // aka biller ID (required for RTP)
   }
 
   float transaction_amount = 1 [(google.api.field_behavior) = REQUIRED];

@@ -17,6 +17,7 @@ message MerchantPayload {
   string institution_id = 1;
   string name = 3;
   string account_number = 4;
+  string branch_code = 5;
 }
 
 message ListMerchantsResponse {
