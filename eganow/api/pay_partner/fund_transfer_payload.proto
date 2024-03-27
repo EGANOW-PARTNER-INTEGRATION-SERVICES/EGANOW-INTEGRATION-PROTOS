@@ -12,7 +12,7 @@ message FundTransferRequest {
   message BankFundTransferRequest {
     string source_account_number = 2 [(google.api.field_behavior) = REQUIRED]; // aka payer account number (for RTP)
     string source_account_name = 3; // optional // aka payer name (for RTP)
-    string destination_account_number = 4 [(google.api.field_behavior) = REQUIRED];
+    string destination_account_number = 4; // required for FTC
     string destination_account_name = 5; // optional
     string bank_code = 6 [(google.api.field_behavior) = REQUIRED];
 
