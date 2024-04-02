@@ -9,7 +9,7 @@ import "google/api/field_behavior.proto";
 message CreateOrUpdateMerchantRequest {
   string merchant_id = 1 [(google.api.field_behavior) = REQUIRED];
   string merchant_name = 2 [(google.api.field_behavior) = REQUIRED];
-  string account_name = 3 [(google.api.field_behavior) = REQUIRED];
+  string account_number = 3 [(google.api.field_behavior) = REQUIRED];
   string branch_code = 4 [(google.api.field_behavior) = REQUIRED];
 }
 
