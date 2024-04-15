@@ -8,6 +8,7 @@ import "google/api/annotations.proto";
 import "eganow/api/pay_partner/card_payload.proto";
 
 service CardSvc {
+  // GetCardDetails returns the details of a card
   rpc GetCardDetails(GetCardRequest) returns (GetCardResponse) {
     option (google.api.http) = {
       post: "/api/v1/cards/details"
@@ -15,6 +16,7 @@ service CardSvc {
     };
   }
 
+  // CreateCard creates a new card (create client, create account and then create card)
   rpc CreateCard(CreateCardRequest) returns (CreateCardResponse) {
     option (google.api.http) = {
       post: "/api/v1/cards"
@@ -22,6 +24,7 @@ service CardSvc {
     };
   }
 
+  // GetCardTransactions returns the transactions made on a card
   rpc GetCardTransactions(GetCardTransactionsRequest) returns (CardTransactionList) {
     option (google.api.http) = {
       post: "/api/v1/cards/transactions"

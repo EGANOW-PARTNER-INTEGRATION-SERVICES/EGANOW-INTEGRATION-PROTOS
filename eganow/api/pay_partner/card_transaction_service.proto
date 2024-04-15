@@ -9,6 +9,7 @@ import "eganow/api/pay_partner/card_transaction_payload.proto";
 import "eganow/api/pay_partner/common.proto";
 
 service CardTransactionSvc {
+  // Initiate a payment transaction, returns a webview URL to complete the payment
   rpc InitiatePay(PayTransactionRequest) returns (PayPartnerStringValue) {
     option (google.api.http) = {
       post: "/api/v1/cards/transactions/pay/complete"
@@ -16,6 +17,7 @@ service CardTransactionSvc {
     };
   }
 
+  // Callback to confirm payment transaction
   rpc HandleMpgsPayCallback(MpgsPayCallbackRequest) returns (PayPartnerEmpty) {
     option (google.api.http) = {
       post: "/api/v1/cards/transactions/pay/callback"
