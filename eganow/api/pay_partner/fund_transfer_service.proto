@@ -86,4 +86,12 @@ service FundTransferSvc {
       body: "*"
     };
   }
+
+  // GhipssRTPTransactionCallback callback from the partner.
+  rpc GhipssRTPTransactionCallback(GhipssRTPTransactionCallbackRequest) returns (PayPartnerEmpty) {
+    option (google.api.http) = {
+      post: "/api/v1/transactions/rtp/callback"
+      body: "*"
+    };
+  }
 }
