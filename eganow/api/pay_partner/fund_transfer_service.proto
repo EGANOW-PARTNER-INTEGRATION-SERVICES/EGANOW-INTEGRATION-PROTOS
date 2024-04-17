@@ -80,12 +80,12 @@ service FundTransferSvc {
   }
 
   // REQUEST TO PAY
-  rpc CollectionDebitTransactionWebService(CollectionDebitTransactionWebServiceRequest) returns (WebServiceResponse) {
-    option (google.api.http) = {
-      post: "/api/v1/transactions/rtp/callback"
-      body: "*"
-    };
-  }
+  //  rpc CollectionDebitTransactionWebService(CollectionDebitTransactionWebServiceRequest) returns (WebServiceResponse) {
+  //    option (google.api.http) = {
+  //      post: "/api/v1/transactions/rtp/callback"
+  //      body: "*"
+  //    };
+  //  }
 
   // GhipssRTPTransactionCallback callback from the partner.
   rpc GhipssRTPTransactionCallback(GhipssRTPTransactionCallbackRequest) returns (PayPartnerEmpty) {
