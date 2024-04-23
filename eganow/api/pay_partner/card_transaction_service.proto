@@ -12,7 +12,7 @@ service CardTransactionSvc {
   // Initiate a payment transaction, returns a webview URL to complete the payment
   rpc InitiatePay(PayTransactionRequest) returns (PayPartnerStringValue) {
     option (google.api.http) = {
-      post: "/api/v1/cards/transactions/pay/complete"
+      post: "/api/v1/cards/transactions/pay/initiate"
       body: "*"
     };
   }
