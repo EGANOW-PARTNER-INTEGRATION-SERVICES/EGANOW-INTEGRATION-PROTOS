@@ -6,6 +6,11 @@ option go_package = "github.com/eganow/partners/api;pb";
 
 import "google/api/field_behavior.proto";
 
+message PayMerchantCredentials {
+  string merchant_id = 1 [(google.api.field_behavior) = REQUIRED];
+  string merchant_secret = 2 [(google.api.field_behavior) = REQUIRED];
+}
+
 message PayTransactionRequest {
   message TransactionCardInfo {
     string card_number = 1 [(google.api.field_behavior) = REQUIRED];
@@ -19,7 +24,8 @@ message PayTransactionRequest {
   float transaction_amount = 2 [(google.api.field_behavior) = REQUIRED];
   float tax_amount = 3 [(google.api.field_behavior) = REQUIRED];
   TransactionCardInfo card_info = 4 [(google.api.field_behavior) = REQUIRED];
-  string transaction_reference_number = 5;
+  PayMerchantCredentials merchant_credentials = 5 [(google.api.field_behavior) = REQUIRED];
+  string transaction_reference_number = 6;
 }
 
 message MpgsPayCallbackRequest {
