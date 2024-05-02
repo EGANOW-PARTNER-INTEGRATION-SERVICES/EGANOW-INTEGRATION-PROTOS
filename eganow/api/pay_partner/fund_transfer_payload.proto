@@ -40,6 +40,9 @@ message FundTransferRequest {
   string transaction_reference_number = 10; // optional
 
   string pay_partner_id = 12 [(google.api.field_behavior) = REQUIRED];
+
+  string merchant_service_name = 13; // required by MTN
+  string merchant_name = 14; // required by MTN
 }
 
 // TransferFundsResponse is the response message for the TransferFunds RPC.
@@ -104,17 +107,17 @@ message MtnMomoTransactionCallbackRequest {
 
 // GhipssRTPTransactionCallbackRequest is the request message for the MtnMomoTransactionCallback RPC.
 message GhipssRTPTransactionCallbackRequest {
-    string billerId = 1;
-    string billId = 2;
-    string billDate = 3;
-    uint32 billAmount = 4;
-    string billDescription = 5;
-    string payerName = 6;
-    string payerInstitutionId = 7;
-    string payerAccountNumber = 8;
-    string status = 9;
-    string requestTimestamp = 10;
-    string requestSignature = 11;
+  string billerId = 1;
+  string billId = 2;
+  string billDate = 3;
+  uint32 billAmount = 4;
+  string billDescription = 5;
+  string payerName = 6;
+  string payerInstitutionId = 7;
+  string payerAccountNumber = 8;
+  string status = 9;
+  string requestTimestamp = 10;
+  string requestSignature = 11;
 
 }
 
