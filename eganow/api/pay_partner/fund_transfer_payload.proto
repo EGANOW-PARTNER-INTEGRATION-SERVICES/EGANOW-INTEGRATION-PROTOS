@@ -105,6 +105,22 @@ message MtnMomoTransactionCallbackRequest {
 
 }
 
+message MtnMomoOpenApiTransactionCallbackRequest {
+  message Payer {
+    string partyIdType = 1;
+    string partyId = 2;
+  }
+
+  string financialTransactionId = 1;
+  string externalId = 2;
+  string amount = 3;
+  string currency = 4;
+  Payer payer = 5;
+  string payerMessage = 6;
+  string payeeNote = 7;
+  string status = 8;
+}
+
 // GhipssRTPTransactionCallbackRequest is the request message for the MtnMomoTransactionCallback RPC.
 message GhipssRTPTransactionCallbackRequest {
   string billerId = 1;

@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+option csharp_namespace = "EganowGrpcEMVCardApi.Protos";
+option go_package = "github.com/eganow/partners/api;pb";
+
+package CardAuthentication;
+
+service CardAuthenticationSvc {
+  rpc AuthenticateCardTransactionWith3ds(Card3DsInputDataRequestMessage) returns (Card3DsDataResponseMessage);
+
+  rpc CheckCardForThreeDSToAddAsEganowPaymentMethod(Card3DsInputDataRequestMessage) returns (Card3DsDataResponseMessage);
+}
+
+
+
+/////////////////////////
+
+
+message Card3DsInputDataRequestMessage {
+  string orderId = 1;
+  string transactionId = 2;
+  double tranAmount = 3;
+  int32 cardExpiryMonth = 4;
+  int32 cardExpiryYear = 5;
+  string deviceMobileOrWeb = 6;
+  string cvv = 7;
+  string cardHolderName = 8;
+  string currency = 9;
+  string cardNumber = 10;
+  string transTypeAuthOrPurchase = 11;
+  string serviceNameOrdescriptor = 12;
+  string merchantCardApiId =13;
+  string merchantCardApiPassword = 14;
+  string endpointFor3DSCheck = 50;
+  string providerEnumValue = 51;
+
+}
+
+
+
+message Card3DsDataResponseMessage {
+  bool isSuccess = 1;
+  string message = 2;
+  string brand = 3;
+  string successOrFailOrPendingTransStatus = 4;
+  string scheme = 5;
+  string cardCurrencyIso = 6;
+  string redirectUrl = 7;
+  string cardIs3DsYesOrNo = 8;
+  string gatewayCode = 9;
+  string gatewayRecommendation = 10;
+  string orderIdFromCardGateway = 11;
+  string cardDsTransactionIdFromCardGateway = 12;
+  string cardAcsTransactionIdFromCardGateway = 13;
+  string card3DsAuthResponseUrl = 14;
+
+  string cardTypeDebitCreditPrepaidVirtual = 20;
+  string cardCountryOfIssue = 21;
+  string cardIssuingBankOrgName = 22;
+}

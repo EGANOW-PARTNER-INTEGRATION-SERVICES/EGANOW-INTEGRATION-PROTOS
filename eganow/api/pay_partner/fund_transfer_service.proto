@@ -57,6 +57,14 @@ service FundTransferSvc {
     };
   }
 
+  // MtnMomoTransactionCallback callback from the partner.
+  rpc MtnMomoOpenApiTransactionCallback(MtnMomoOpenApiTransactionCallbackRequest) returns (PayPartnerEmpty) {
+    option (google.api.http) = {
+      put: "/api/v1/transactions/mtn-momo/callback"
+      body: "*"
+    };
+  }
+
   rpc AtMoneyTransactionCallback(AtMoneyTransactionCallbackRequest) returns (PayPartnerEmpty) {
     option (google.api.http) = {
       post: "/api/v1/transactions/at-money/callback"
