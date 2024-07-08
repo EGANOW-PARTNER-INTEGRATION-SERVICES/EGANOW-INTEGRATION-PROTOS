@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package eganow.api.pay_partner;
+
+option go_package = "github.com/eganow/partners/api;pb";
+
+enum BankNameEnquiryType {
+  UNSPECIFIED = 0;
+  DEBIT = 1;
+  CREDIT = 2;
+}

@@ -5,22 +5,17 @@ package eganow.api.pay_partner;
 option go_package = "github.com/eganow/partners/api;pb";
 
 import "google/api/field_behavior.proto";
+import "eganow/api/pay_partner/name_enquiry_entity.proto";
 
 // NameEnquiryRequest is the request sent to the NameEnquiry service
 message NameEnquiryRequest {
-  enum RequestType {
-    UNSPECIFIED = 0;
-    DEBIT = 1;
-    CREDIT = 2;
-  }
-
   message BankNameEnquiryRequest {
     string recipient_account_number = 1 [(google.api.field_behavior) = REQUIRED];
     string terminal_id = 2; // required for GHQR - GHIPSS
     string bank_code = 3 [(google.api.field_behavior) = REQUIRED]; // 3 digits
     string sender_account_name = 4 [(google.api.field_behavior) = REQUIRED];
     string sender_account_number = 5 [(google.api.field_behavior) = REQUIRED];
-    RequestType request_type = 6 [(google.api.field_behavior) = REQUIRED];
+    BankNameEnquiryType request_type = 6 [(google.api.field_behavior) = REQUIRED];
   }
 
   oneof account_number {
@@ -29,7 +24,17 @@ message NameEnquiryRequest {
   }
 }
 
-message QrNameEnquiryResponse {
+message GhQrNameEnquiryRequest {
+  string recipient_account_number = 1 [(google.api.field_behavior) = REQUIRED];
+  string terminal_id = 2 [(google.api.field_behavior) = REQUIRED]; // required for GHQR - GHIPSS
+  string bank_code = 3 [(google.api.field_behavior) = REQUIRED]; // 3 digits
+  string sender_account_name = 4 [(google.api.field_behavior) = REQUIRED];
+  string sender_account_number = 5 [(google.api.field_behavior) = REQUIRED];
+  BankNameEnquiryType request_type = 6 [(google.api.field_behavior) = REQUIRED];
+}
+
+
+message GhQrNameEnquiryResponse {
   oneof account_holder {
     string name = 1;
     string qr_code = 2;
